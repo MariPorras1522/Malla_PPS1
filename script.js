@@ -1,3 +1,4 @@
+// script.js
 const niveles = [
   {
     ciclo: "Nivel 1 - Ciclo 1",
@@ -98,12 +99,7 @@ niveles.forEach(nivel => {
     div.dataset.id = m.id;
     div.onclick = () => aprobar(m.id);
 
-    estado[m.id] = {
-      aprobada: false,
-      requisitos: m.requisitos || [],
-      desbloquea: m.desbloquea || [],
-      div
-    };
+    estado[m.id] = { aprobada: false, requisitos: m.requisitos || [], desbloquea: m.desbloquea || [], div };
 
     if (!m.requisitos || m.requisitos.length === 0) {
       desbloquear(m.id);
@@ -123,7 +119,6 @@ function desbloquear(id) {
 function aprobar(id) {
   const m = estado[id];
   if (m.aprobada) return;
-
   m.aprobada = true;
   m.div.classList.remove("desbloqueada");
   m.div.classList.add("aprobada");
